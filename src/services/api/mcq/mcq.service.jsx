@@ -1,8 +1,9 @@
 import axios from "axios";
+import { GiAbstract034 } from "react-icons/gi";
 
 // Create an instance of axios with default configuration
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8000/api", // Replace with your API base URL
+  baseURL: "http://localhost:8000/", // Replace with your API base URL
   headers: {
     "Content-Type": "application/json",
   },
@@ -22,7 +23,7 @@ export const GetMCQ = async (id) => {
  * @returns {Promise} - Axios response promise with the list of all MCQs.
  */
 export const GetMCQs = async () => {
-  return await axiosInstance.get(`/mcqs`);
+  return await axiosInstance.get(`/mcqs/`);
 };
 
 /**
@@ -31,7 +32,8 @@ export const GetMCQs = async () => {
  * @returns {Promise} - Axios response promise with the created MCQ data.
  */
 export const CreateMcq = async (data) => {
-  return await axiosInstance.post(`/mcqs`, data);
+  console.log(JSON.stringify(data, null, 2));
+  return await axiosInstance.post(`/mcqs/`, data);
 };
 
 /**

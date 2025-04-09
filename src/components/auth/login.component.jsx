@@ -6,7 +6,10 @@ import { toast } from "react-toastify";
 import { Urls } from "../../constant/Urls";
 import AuthContext from "../../contexts/auth.context";
 import { Login } from "../../services/api/authService"; // Import the login service
-import AuthCookies from "../../services/cookie/AuthCookies";
+import {
+  SetAccessToken,
+  SetRefreshToken,
+} from "../../services/cookie/AuthCookies";
 
 const LoginComponent = () => {
   const { setIsLoggedInUser } = useContext(AuthContext);
@@ -14,9 +17,10 @@ const LoginComponent = () => {
 
   const onFinish = async (values) => {
     try {
-      const response = await Logvin(values); // Use the login service
-      AuthCookies.SetAccessToken(response.data.access);
-      AuthCookies.SetRefreshToken(response.data.refresh);
+      console.log(values);
+      const response = await Login(values); // Use the login service
+      SetAccessToken(response.data.access);
+      SetRefreshToken(response.data.refresh);
       setIsLoggedInUser(true);
       toast.success("Login successful!");
       navigate(Urls.Home());
