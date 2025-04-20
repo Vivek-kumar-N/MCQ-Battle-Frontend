@@ -73,9 +73,10 @@ const MCQList = () => {
               </Link>
               <div className="flex justify-end gap-4">
                 <Button type="primary" onClick={() => handleEdit(mcq.id)}>
+                  {console.log(mcq)}
                   Edit
                 </Button>
-                <Button type="default" onClick={() => showDeleteModal(mcq)}>
+                <Button type="default" onClick={() => deleteMcq(mcq.id)}>
                   Delete
                 </Button>
               </div>

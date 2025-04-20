@@ -1,17 +1,19 @@
 // src/services/api/axios-instance.js
 import axios from "axios";
-import AuthCookies from "../services/cookie/AuthCookies";
+import { GetAccessToken } from "../services/cookie/AuthCookies";
 const BASE_URL = import.meta.env.VITE_BASE_API_URL;
 
 // Create an Axios instance
-const axiosInstance = axios.create();
+const axiosInstance = axios.create({
+  withCredentials: true,
+});
 
 // Set up a request interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
     config.url = BASE_URL + config.url;
 
-    const token = AuthCookies.GetAccessToken();
+    const token = GetAccessToken();
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }

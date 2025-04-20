@@ -2,7 +2,7 @@ import { Button, Card, List, Modal, Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Urls } from "../../constant/Urls";
-import { GetMCQ } from "../../services/api/mcq/mcq.service";
+import { GetMCQ, DeleteMcq } from "../../services/api/mcq/mcq.service";
 
 const MCQDetails = () => {
   const { id: mcqId } = useParams();
@@ -30,7 +30,17 @@ const MCQDetails = () => {
     setIsModalVisible(true);
   };
 
-  const handleDelete = () => {};
+  const handleDelete = async () => {
+    try {
+      const response = await DeleteMcq(mcqId);
+      toast.success("MCQ deleted successfully!");
+      getMcq();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsModalVisible(false);
+    }
+  };
 
   const handleCancel = () => {
     setIsModalVisible(false);
