@@ -8,6 +8,7 @@ const AuthProvider = ({ children }) => {
   const checkIfUserIsLoggedIn = async () => {
     try {
       const response = await Protected();
+      // console.log(response);
       setIsLoggedInUser(true);
     } catch (err) {
       setIsLoggedInUser(false);

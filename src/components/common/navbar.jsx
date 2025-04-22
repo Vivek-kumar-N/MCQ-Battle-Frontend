@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Urls } from "../../constant/Urls";
 import AuthContext from "../../contexts/auth.context";
-// import AuthCookies from "../../services/cookie/AuthCookies";
 import { Signup } from "../../services/api/authService";
 import { ClearAll } from "../../services/cookie/AuthCookies";
 

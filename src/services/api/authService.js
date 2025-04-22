@@ -7,6 +7,7 @@ export const Signup = async (data) => {
 
 // Authenticates an existing user by sending their credentials to the `/login` endpoint
 export const Login = async (data) => {
+
   const temp = await axiosInstance.post(`/login/`, data);
   console.log(temp);
   return temp;
