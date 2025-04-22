@@ -1,4 +1,5 @@
 import axios from "axios";
+import { GiAbstract034 } from "react-icons/gi";
 
 // Create an instance of axios with default configuration
 const getCookie = (name) => {
@@ -12,6 +13,7 @@ const getCookie = (name) => {
 const token = getCookie("access_token"); // Assuming you have stored it in a cookie
 
 const axiosInstance = axios.create({
+
   baseURL: "http://localhost:8000",
   withCredentials: true, // Send cookies with every request
   headers: {
@@ -43,8 +45,10 @@ export const GetMCQs = async () => {
  * @returns {Promise} - Axios response promise with the created MCQ data.
  */
 export const CreateMcq = async (data) => {
+
   console.log(data);
   console.log(`${axiosInstance.defaults.baseURL}/mcqs`);
+
   return await axiosInstance.post(`/mcqs/`, data);
 };
 

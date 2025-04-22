@@ -17,6 +17,7 @@ const LoginComponent = () => {
 
   const onFinish = async (values) => {
     try {
+      console.log(values);
       const response = await Login(values); // Use the login service
       SetAccessToken(response.data.access);
       SetRefreshToken(response.data.refresh);

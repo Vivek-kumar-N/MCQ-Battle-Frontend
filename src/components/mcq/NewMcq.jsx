@@ -18,6 +18,7 @@ const NewMcq = () => {
   const createMcq = async (data) => {
     try {
       const response = await CreateMcq(data);
+      console.log(data);
       toast.success("MCQ created successfully!");
       navigate(Urls.Mcqs.Mcqs());
     } catch (err) {
